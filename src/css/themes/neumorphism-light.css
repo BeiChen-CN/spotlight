@@ -1,0 +1,131 @@
+/**
+ * Neumorphism - 浅色主题
+ * 新拟态设计，柔和的凸起/凹陷感
+ */
+
+.theme-neumorphism-light {
+  --primary: #6d5dfc;
+  --primary-hover: #5a4de0;
+  --primary-active: #4b3ec7;
+  --primary-light: #e8e5ff;
+  
+  --bg-primary: #e0e5ec;
+  --bg-secondary: #e0e5ec;
+  --bg-tertiary: #d1d9e6;
+  --bg-card: #e0e5ec;
+  --bg-sidebar: #e0e5ec;
+  
+  --text-primary: #31344b;
+  --text-secondary: #6c6f93;
+  --text-tertiary: #9baacf;
+  
+  --border-color: transparent;
+  --border-light: transparent;
+  
+  --shadow-card: 9px 9px 16px rgba(163,177,198,0.6), -9px -9px 16px rgba(255,255,255,0.5);
+  --shadow-lg: 12px 12px 24px rgba(163,177,198,0.6), -12px -12px 24px rgba(255,255,255,0.5);
+  --shadow-inset: inset 6px 6px 10px rgba(163,177,198,0.6), inset -6px -6px 10px rgba(255,255,255,0.5);
+  
+  --radius-sm: 10px;
+  --radius-md: 15px;
+  --radius-lg: 20px;
+  --radius-xl: 25px;
+}
+
+.theme-neumorphism-light .btn {
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  box-shadow: 5px 5px 10px rgba(163,177,198,0.5), -5px -5px 10px rgba(255,255,255,0.5);
+}
+
+.theme-neumorphism-light .btn:hover {
+  box-shadow: 3px 3px 6px rgba(163,177,198,0.5), -3px -3px 6px rgba(255,255,255,0.5);
+}
+
+.theme-neumorphism-light .btn:active {
+  box-shadow: inset 3px 3px 6px rgba(163,177,198,0.5), inset -3px -3px 6px rgba(255,255,255,0.5);
+}
+
+.theme-neumorphism-light .btn-primary {
+  background: linear-gradient(145deg, #7a6aff, #6050e0);
+  box-shadow: 5px 5px 10px rgba(163,177,198,0.5), -5px -5px 10px rgba(255,255,255,0.5);
+}
+
+.theme-neumorphism-light .btn-secondary {
+  background: var(--bg-primary);
+}
+
+.theme-neumorphism-light .card {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  border: none;
+}
+
+.theme-neumorphism-light .input {
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--bg-primary);
+  box-shadow: inset 4px 4px 8px rgba(163,177,198,0.5), inset -4px -4px 8px rgba(255,255,255,0.5);
+}
+
+.theme-neumorphism-light .input:focus {
+  box-shadow: inset 4px 4px 8px rgba(163,177,198,0.6), inset -4px -4px 8px rgba(255,255,255,0.6);
+}
+
+.theme-neumorphism-light .sidebar {
+  background: var(--bg-sidebar);
+  box-shadow: 4px 0 8px rgba(163,177,198,0.3);
+}
+
+.theme-neumorphism-light .nav-item {
+  border-radius: var(--radius-md);
+  margin: 4px 12px;
+  border-left: none;
+}
+
+.theme-neumorphism-light .nav-item:hover {
+  background: transparent;
+  box-shadow: 3px 3px 6px rgba(163,177,198,0.4), -3px -3px 6px rgba(255,255,255,0.4);
+}
+
+.theme-neumorphism-light .nav-item.active {
+  background: var(--bg-primary);
+  box-shadow: inset 3px 3px 6px rgba(163,177,198,0.5), inset -3px -3px 6px rgba(255,255,255,0.5);
+  color: var(--primary);
+}
+
+.theme-neumorphism-light .modal {
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+.theme-neumorphism-light .pick-button {
+  background: linear-gradient(145deg, #7a6aff, #6050e0);
+  box-shadow: 12px 12px 24px rgba(163,177,198,0.6), -12px -12px 24px rgba(255,255,255,0.5);
+  border-radius: 50%;
+}
+
+.theme-neumorphism-light .pick-button:hover {
+  box-shadow: 8px 8px 16px rgba(163,177,198,0.6), -8px -8px 16px rgba(255,255,255,0.5);
+}
+
+.theme-neumorphism-light .pick-button:active {
+  box-shadow: inset 8px 8px 16px rgba(86,70,200,0.3), inset -8px -8px 16px rgba(130,110,255,0.3);
+}
+
+.theme-neumorphism-light .avatar {
+  box-shadow: 4px 4px 8px rgba(163,177,198,0.5), -4px -4px 8px rgba(255,255,255,0.5);
+}
+
+.theme-neumorphism-light .switch {
+  box-shadow: inset 3px 3px 6px rgba(163,177,198,0.5), inset -3px -3px 6px rgba(255,255,255,0.5);
+  background: var(--bg-primary);
+}
+
+.theme-neumorphism-light .switch::after {
+  box-shadow: 2px 2px 4px rgba(163,177,198,0.5), -2px -2px 4px rgba(255,255,255,0.5);
+}
+
+.theme-neumorphism-light .switch.active {
+  background: var(--primary);
+}

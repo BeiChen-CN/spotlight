@@ -1,0 +1,178 @@
+/**
+ * Flat Design - 浅色主题 (Fresh Modern)
+ * 清新青色系，大胆的扁平化风格
+ */
+
+.theme-flat-light {
+  /* Cyan Palette from UI Pro Max */
+  --primary: #0891B2;       /* Cyan 600 */
+  --primary-hover: #06b6d4; /* Cyan 500 */
+  --primary-active: #155e75;/* Cyan 800 */
+  --primary-light: #cffafe; /* Cyan 100 */
+  
+  --bg-primary: #ecfeff;    /* Cyan 50 - Main Background */
+  --bg-secondary: #ffffff;  /* White - Content/Sidebar */
+  --bg-tertiary: #f0f9ff;   /* Sky 50 */
+  --bg-card: #ffffff;
+  --bg-sidebar: #ffffff;
+  --bg-modal: #ffffff;
+  
+  --text-primary: #164e63;  /* Cyan 900 */
+  --text-secondary: #0e7490;/* Cyan 700 */
+  --text-tertiary: #67e8f9; /* Cyan 300 */
+  
+  --border-color: #22d3ee;  /* Cyan 400 */
+  --border-light: #a5f3fc;  /* Cyan 200 */
+  
+  --shadow-card: none;
+  --shadow-lg: none;
+  
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  
+  /* Typography Friendly Override */
+  font-family: "Varela Round", "Quicksand", "Microsoft YaHei UI", sans-serif;
+}
+
+.theme-flat-light .btn {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: 0;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.theme-flat-light .btn-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.theme-flat-light .btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.theme-flat-light .btn-primary:active {
+  transform: translateY(0);
+}
+
+.theme-flat-light .btn-secondary {
+  background: white;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.theme-flat-light .btn-secondary:hover {
+  background: var(--primary-light);
+}
+
+.theme-flat-light .card {
+  border: 2px solid var(--border-light);
+  border-radius: 0;
+  box-shadow: none;
+  background: white;
+}
+
+.theme-flat-light .card-header {
+  border-bottom: 2px solid var(--border-light);
+  background: var(--bg-tertiary);
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.theme-flat-light .input {
+  border: 2px solid var(--border-color);
+  border-radius: 0;
+  background: white;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.theme-flat-light .input::placeholder {
+  color: #a5f3fc;
+}
+
+.theme-flat-light .input:focus {
+  border-color: var(--primary);
+  background: var(--bg-tertiary);
+  box-shadow: none;
+}
+
+.theme-flat-light .sidebar {
+  background: white;
+  border-right: 2px solid var(--border-color);
+}
+
+.theme-flat-light .sidebar-logo {
+  color: var(--primary);
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.theme-flat-light .nav-item {
+  color: var(--text-secondary);
+  border-left: 4px solid transparent;
+  margin: 4px 0;
+  font-weight: 600;
+}
+
+.theme-flat-light .nav-item:hover {
+  background: var(--bg-tertiary);
+  color: var(--primary);
+}
+
+.theme-flat-light .nav-item.active {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-left-color: var(--primary);
+}
+
+.theme-flat-light .modal {
+  border: 4px solid var(--primary);
+  border-radius: 0;
+  box-shadow: 20px 20px 0 rgba(8, 145, 178, 0.2);
+}
+
+.theme-flat-light .pick-button {
+  border-radius: 0;
+  background: var(--primary);
+  box-shadow: 8px 8px 0 var(--border-color);
+  font-weight: 800;
+  border: 2px solid var(--primary);
+  transition: all 0.15s ease;
+}
+
+.theme-flat-light .pick-button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 10px 10px 0 var(--border-color);
+}
+
+.theme-flat-light .pick-button:active {
+  transform: translate(4px, 4px);
+  box-shadow: 4px 4px 0 var(--border-color);
+}
+
+.theme-flat-light .avatar {
+  border-radius: 0;
+  border: 2px solid var(--border-color);
+}
+
+.theme-flat-light .table th {
+  background: var(--bg-tertiary);
+  color: var(--primary);
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.theme-flat-light .table td {
+  border-bottom: 2px solid var(--bg-tertiary);
+}
+
+.theme-flat-light .badge {
+  border-radius: 0;
+  font-weight: 700;
+}

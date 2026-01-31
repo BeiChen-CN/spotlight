@@ -1,0 +1,99 @@
+/**
+ * Fluent Design - 浅色主题
+ * 微软风格，亚克力/毛玻璃效果
+ */
+
+.theme-fluent-light {
+  --primary: #0078d4;
+  --primary-hover: #106ebe;
+  --primary-active: #005a9e;
+  --primary-light: #deecf9;
+  
+  --bg-primary: #ffffff;
+  --bg-secondary: #f3f3f3;
+  --bg-tertiary: #e5e5e5;
+  --bg-card: #ffffff;
+  --bg-sidebar: #f9f9f9;
+  
+  --text-primary: #1a1a1a;
+  --text-secondary: #616161;
+  --text-tertiary: #8a8a8a;
+  
+  --border-color: #e1e1e1;
+  --border-light: #f0f0f0;
+  
+  --shadow-card: 0 1.6px 3.6px rgba(0,0,0,0.13), 0 0.3px 0.9px rgba(0,0,0,0.1);
+  --shadow-lg: 0 6.4px 14.4px rgba(0,0,0,0.13), 0 1.2px 3.6px rgba(0,0,0,0.1);
+  
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+}
+
+.theme-fluent-light .sidebar {
+  background: rgba(249, 249, 249, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.theme-fluent-light .btn {
+  font-weight: 400;
+}
+
+.theme-fluent-light .btn-primary {
+  background: var(--primary);
+}
+
+.theme-fluent-light .btn-secondary {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.theme-fluent-light .btn-secondary:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.theme-fluent-light .card {
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-card);
+}
+
+.theme-fluent-light .input {
+  border: 1px solid transparent;
+  border-bottom: 1px solid var(--border-color);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.theme-fluent-light .input:focus {
+  border-bottom: 2px solid var(--primary);
+  box-shadow: none;
+}
+
+.theme-fluent-light .nav-item {
+  border-radius: var(--radius-sm);
+  margin: 2px 8px;
+  border-left: none;
+}
+
+.theme-fluent-light .nav-item.active {
+  background: var(--primary-light);
+  border-left: none;
+}
+
+.theme-fluent-light .nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 16px;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+.theme-fluent-light .pick-button {
+  background: var(--primary);
+  box-shadow: 0 4px 16px rgba(0, 120, 212, 0.3);
+}

@@ -1,0 +1,80 @@
+/**
+ * Fluent Design - 深色主题
+ * 微软风格，亚克力效果
+ */
+
+.theme-fluent-dark {
+  --primary: #60cdff;
+  --primary-hover: #4cc2ff;
+  --primary-active: #0078d4;
+  --primary-light: #004578;
+  
+  --bg-primary: #202020;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #3d3d3d;
+  --bg-card: #2d2d2d;
+  --bg-sidebar: #1f1f1f;
+  
+  --text-primary: #ffffff;
+  --text-secondary: #c8c8c8;
+  --text-tertiary: #8a8a8a;
+  
+  --border-color: #404040;
+  --border-light: #333333;
+  
+  --shadow-card: 0 1.6px 3.6px rgba(0,0,0,0.3), 0 0.3px 0.9px rgba(0,0,0,0.25);
+  --shadow-lg: 0 6.4px 14.4px rgba(0,0,0,0.35), 0 1.2px 3.6px rgba(0,0,0,0.3);
+  
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+}
+
+.theme-fluent-dark .sidebar {
+  background: rgba(31, 31, 31, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.theme-fluent-dark .btn-primary {
+  background: var(--primary);
+  color: #000000;
+}
+
+.theme-fluent-dark .btn-secondary {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.theme-fluent-dark .card {
+  border: 1px solid var(--border-color);
+  background: rgba(45, 45, 45, 0.7);
+  backdrop-filter: blur(20px);
+}
+
+.theme-fluent-dark .input {
+  border: 1px solid transparent;
+  border-bottom: 1px solid var(--border-color);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.theme-fluent-dark .input:focus {
+  border-bottom: 2px solid var(--primary);
+  box-shadow: none;
+}
+
+.theme-fluent-dark .nav-item {
+  border-radius: var(--radius-sm);
+  margin: 2px 8px;
+  border-left: none;
+}
+
+.theme-fluent-dark .nav-item.active {
+  background: var(--primary-light);
+}
+
+.theme-fluent-dark .pick-button {
+  background: linear-gradient(135deg, #60cdff, #0078d4);
+  color: #000000;
+}

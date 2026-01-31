@@ -1,0 +1,177 @@
+/**
+ * Flat Design - 深色主题 (Cyber Punk / High Contrast)
+ * 深色背景，霓虹粉色强调，高对比度
+ */
+
+.theme-flat-dark {
+  --primary: #c084fc;       /* Purple 500 */
+  --primary-hover: #d8b4fe; /* Purple 300 */
+  --primary-active: #a855f7;/* Purple 600 */
+  --primary-light: #3b0764; /* Purple 950 */
+  
+  --bg-primary: #030712;    /* Gray 950 - Main Background */
+  --bg-secondary: #111827;  /* Gray 900 - Sidebar/Content */
+  --bg-tertiary: #1f2937;   /* Gray 800 */
+  --bg-card: #111827;
+  --bg-sidebar: #111827;
+  --bg-modal: #111827;
+  
+  --text-primary: #f9fafb;  /* Gray 50 */
+  --text-secondary: #9ca3af;/* Gray 400 */
+  --text-tertiary: #4b5563; /* Gray 600 */
+  
+  --border-color: #374151;  /* Gray 700 */
+  --border-light: #1f2937;  /* Gray 800 */
+  
+  --shadow-card: none;
+  --shadow-lg: none;
+  
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  
+  font-family: "JetBrains Mono", "Fira Code", Consolas, monospace; /* Monospace for tech feel */
+}
+
+.theme-flat-dark .btn {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 0;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.theme-flat-dark .btn-primary {
+  background: var(--primary);
+  color: #030712;
+  border-color: var(--primary);
+}
+
+.theme-flat-dark .btn-primary:hover {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+  box-shadow: 0 0 15px var(--primary-hover); /* Neon glow */
+}
+
+.theme-flat-dark .btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.theme-flat-dark .btn-secondary:hover {
+  border-color: var(--text-primary);
+  background: var(--bg-tertiary);
+}
+
+.theme-flat-dark .card {
+  border: 1px solid var(--border-color);
+  border-radius: 0;
+  box-shadow: none;
+  background: var(--bg-secondary);
+}
+
+.theme-flat-dark .card-header {
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-tertiary);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.theme-flat-dark .input {
+  border: 1px solid var(--border-color);
+  border-radius: 0;
+  background: black;
+  color: var(--primary);
+  font-family: inherit;
+}
+
+.theme-flat-dark .input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px var(--primary);
+}
+
+.theme-flat-dark .sidebar {
+  background: black;
+  border-right: 1px solid var(--border-color);
+}
+
+.theme-flat-dark .sidebar-logo {
+  color: var(--primary);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.theme-flat-dark .nav-item {
+  color: var(--text-secondary);
+  border-left: 2px solid transparent;
+  margin: 2px 0;
+}
+
+.theme-flat-dark .nav-item:hover {
+  background: var(--bg-tertiary);
+  color: white;
+}
+
+.theme-flat-dark .nav-item.active {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-left-color: var(--primary);
+}
+
+.theme-flat-dark .modal {
+  border: 2px solid var(--primary);
+  border-radius: 0;
+  background: black;
+  box-shadow: 0 0 30px rgba(192, 132, 252, 0.2);
+}
+
+.theme-flat-dark .pick-button {
+  border-radius: 0;
+  background: transparent;
+  color: var(--primary);
+  box-shadow: 4px 4px 0 var(--primary);
+  font-weight: 800;
+  border: 2px solid var(--primary);
+  transition: all 0.1s steps(2);
+}
+
+.theme-flat-dark .pick-button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--primary);
+  background: var(--primary);
+  color: black;
+}
+
+.theme-flat-dark .pick-button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--primary);
+}
+
+.theme-flat-dark .avatar {
+  border-radius: 0;
+  border: 1px solid var(--primary);
+}
+
+.theme-flat-dark .table th {
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  font-size: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.theme-flat-dark .table td {
+  border-bottom: 1px solid var(--bg-tertiary);
+  color: var(--primary);
+}
+
+.theme-flat-dark .badge {
+  border-radius: 0;
+  background: var(--primary-light);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}

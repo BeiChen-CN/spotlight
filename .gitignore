@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+out/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# User data (don't commit personal data)
+userData/
+data/
+
+# Environment
+.env
+.env.local
+
+# Agent skills and workflows (not part of source code)
+.agent/
+.agents/
+
+# Build and scripts
+scripts/

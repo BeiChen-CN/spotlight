@@ -1,0 +1,116 @@
+/**
+ * Material Design - 浅色主题
+ * Google 风格，现代感强，色彩丰富，卡片阴影
+ */
+
+.theme-material-light {
+  --primary: #1976d2;
+  --primary-hover: #1565c0;
+  --primary-active: #0d47a1;
+  --primary-light: #e3f2fd;
+  
+  --bg-primary: #fafafa;
+  --bg-secondary: #f5f5f5;
+  --bg-tertiary: #eeeeee;
+  --bg-card: #ffffff;
+  --bg-sidebar: #ffffff;
+  
+  --text-primary: #212121;
+  --text-secondary: #757575;
+  --text-tertiary: #9e9e9e;
+  
+  --border-color: #e0e0e0;
+  --border-light: #f5f5f5;
+  
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  --shadow-card-hover: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  --shadow-lg: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  
+  --radius-sm: 4px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+}
+
+.theme-material-light .btn {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s;
+}
+
+.theme-material-light .btn-primary {
+  box-shadow: 0 2px 2px 0 rgba(25,118,210,.14), 0 1px 5px 0 rgba(25,118,210,.12), 0 3px 1px -2px rgba(25,118,210,.2);
+}
+
+.theme-material-light .btn-primary:hover {
+  box-shadow: 0 4px 5px 0 rgba(25,118,210,.14), 0 1px 10px 0 rgba(25,118,210,.12), 0 2px 4px -1px rgba(25,118,210,.2);
+  transform: translateY(-1px);
+}
+
+.theme-material-light .btn-primary:active {
+  box-shadow: 0 2px 2px 0 rgba(25,118,210,.14), 0 1px 5px 0 rgba(25,118,210,.12), 0 3px 1px -2px rgba(25,118,210,.2);
+  transform: translateY(0);
+}
+
+.theme-material-light .card {
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.theme-material-light .card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.theme-material-light .input {
+  border: none;
+  border-bottom: 2px solid #e0e0e0;
+  border-radius: 4px 4px 0 0;
+  background: #f5f5f5;
+  transition: all 0.2s;
+}
+
+.theme-material-light .input:focus {
+  border-bottom-color: var(--primary);
+  background: #e3f2fd;
+  box-shadow: none;
+}
+
+.theme-material-light .nav-item {
+  border-radius: 0 24px 24px 0;
+  margin-right: 8px;
+}
+
+.theme-material-light .nav-item.active {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-left: none;
+}
+
+.theme-material-light .pick-button {
+  background: var(--primary);
+  box-shadow: 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12), 0 2px 4px -1px rgba(0,0,0,.2);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.theme-material-light .pick-button:hover {
+  box-shadow: 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12), 0 5px 5px -3px rgba(0,0,0,.2);
+  transform: scale(1.05);
+}
+
+.theme-material-light .pick-button:active {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
+  transform: scale(0.95);
+}
+
+.theme-material-light .empty-state-icon {
+  background: #eeeeee;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}

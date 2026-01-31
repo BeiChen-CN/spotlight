@@ -1,0 +1,121 @@
+/**
+ * Apple Human Interface - 深色主题
+ */
+
+.theme-apple-dark {
+  --primary: #0a84ff;
+  --primary-hover: #409cff;
+  --primary-active: #0077ed;
+  --primary-light: #1c3a5e;
+  
+  --bg-primary: #1c1c1e;
+  --bg-secondary: #2c2c2e;
+  --bg-tertiary: #3a3a3c;
+  --bg-card: #2c2c2e;
+  --bg-sidebar: #1c1c1e;
+  
+  --text-primary: #ffffff;
+  --text-secondary: #98989d;
+  --text-tertiary: #636366;
+  
+  --border-color: #3a3a3c;
+  --border-light: #2c2c2e;
+  
+  --shadow-card: 0 4px 12px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+  --shadow-card-hover: 0 12px 24px rgba(0,0,0,0.4), 0 4px 8px rgba(0,0,0,0.3);
+  --shadow-lg: 0 20px 40px rgba(0,0,0,0.5);
+  
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+}
+
+.theme-apple-dark {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+}
+
+.theme-apple-dark .btn {
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.theme-apple-dark .btn-primary {
+  background: linear-gradient(180deg, #148aff, #007aff);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.theme-apple-dark .btn-primary:active {
+  background: #007aff;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.theme-apple-dark .card {
+  background: rgba(44, 44, 46, 0.8);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.theme-apple-dark .card:hover {
+  box-shadow: var(--shadow-card-hover);
+  background: rgba(58, 58, 60, 0.8);
+}
+
+.theme-apple-dark .input {
+  border-radius: var(--radius-md);
+  background: rgba(28, 28, 30, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.theme-apple-dark .input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.3);
+  background: rgba(28, 28, 30, 0.8);
+}
+
+.theme-apple-dark .modal {
+  border-radius: var(--radius-xl);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.theme-apple-dark .sidebar {
+  background: rgba(28, 28, 30, 0.7);
+  backdrop-filter: blur(20px);
+}
+
+.theme-apple-dark .nav-item {
+  border-radius: var(--radius-md);
+  margin: 4px 10px;
+  border-left: none;
+  font-weight: 500;
+}
+
+.theme-apple-dark .nav-item.active {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--primary);
+}
+
+.theme-apple-dark .pick-button {
+  background: linear-gradient(180deg, #64d2ff, #0a84ff);
+  box-shadow: 0 4px 12px rgba(10, 132, 255, 0.35), 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.theme-apple-dark .pick-button:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px rgba(10, 132, 255, 0.45);
+}
+
+.theme-apple-dark .pick-button:active {
+  transform: scale(0.96);
+  background: #0a84ff;
+}

@@ -1,0 +1,118 @@
+/**
+ * Glassmorphism - 深色主题
+ */
+
+.theme-glassmorphism-dark {
+  --primary: #a78bfa;
+  --primary-hover: #8b5cf6;
+  --primary-active: #7c3aed;
+  --primary-light: rgba(167, 139, 250, 0.15);
+  
+  --bg-primary: #0f0f23;
+  --bg-secondary: rgba(30, 30, 50, 0.6);
+  --bg-tertiary: rgba(50, 50, 80, 0.4);
+  --bg-card: rgba(30, 30, 50, 0.7);
+  --bg-sidebar: rgba(20, 20, 40, 0.8);
+  
+  --text-primary: #f0f0f5;
+  --text-secondary: #a0a0b0;
+  --text-tertiary: #6b6b80;
+  
+  --border-color: rgba(255, 255, 255, 0.1);
+  --border-light: rgba(255, 255, 255, 0.05);
+  
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+  
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+}
+
+/* 背景渐变 */
+.theme-glassmorphism-dark .app-container {
+  background: linear-gradient(135deg, #1a1a3e 0%, #2d1b4e 50%, #1a1a3e 100%);
+}
+
+.theme-glassmorphism-dark .main-content {
+  background: transparent;
+}
+
+.theme-glassmorphism-dark .content-body {
+  background: transparent;
+}
+
+.theme-glassmorphism-dark .content-header {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.theme-glassmorphism-dark .sidebar {
+  background: var(--bg-sidebar);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-right: 1px solid var(--border-color);
+}
+
+.theme-glassmorphism-dark .btn-primary {
+  background: linear-gradient(135deg, #a78bfa, #7c3aed);
+}
+
+.theme-glassmorphism-dark .btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+}
+
+.theme-glassmorphism-dark .card {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+}
+
+.theme-glassmorphism-dark .input {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+}
+
+.theme-glassmorphism-dark .nav-item {
+  border-radius: var(--radius-md);
+  margin: 4px 10px;
+  border-left: none;
+}
+
+.theme-glassmorphism-dark .nav-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.theme-glassmorphism-dark .nav-item.active {
+  background: rgba(167, 139, 250, 0.2);
+  color: var(--primary);
+}
+
+.theme-glassmorphism-dark .modal {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color);
+}
+
+.theme-glassmorphism-dark .pick-button {
+  background: linear-gradient(135deg, #a78bfa, #7c3aed);
+  box-shadow: 0 12px 40px rgba(167, 139, 250, 0.3);
+}
+
+.theme-glassmorphism-dark .table th {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.theme-glassmorphism-dark .table tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+}

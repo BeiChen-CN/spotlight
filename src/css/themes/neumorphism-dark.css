@@ -1,0 +1,81 @@
+/**
+ * Neumorphism - 深色主题
+ */
+
+.theme-neumorphism-dark {
+  --primary: #8b7dff;
+  --primary-hover: #7a6aff;
+  --primary-active: #6d5dfc;
+  --primary-light: #3d3860;
+  
+  --bg-primary: #2d2d3a;
+  --bg-secondary: #2d2d3a;
+  --bg-tertiary: #252532;
+  --bg-card: #2d2d3a;
+  --bg-sidebar: #2d2d3a;
+  
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0b0;
+  --text-tertiary: #6c6c7c;
+  
+  --border-color: transparent;
+  --border-light: transparent;
+  
+  --shadow-card: 8px 8px 16px rgba(20,20,28,0.8), -8px -8px 16px rgba(50,50,65,0.4);
+  --shadow-lg: 12px 12px 24px rgba(20,20,28,0.8), -12px -12px 24px rgba(50,50,65,0.4);
+  
+  --radius-sm: 10px;
+  --radius-md: 15px;
+  --radius-lg: 20px;
+  --radius-xl: 25px;
+}
+
+.theme-neumorphism-dark .btn {
+  border-radius: var(--radius-md);
+  box-shadow: 5px 5px 10px rgba(20,20,28,0.7), -5px -5px 10px rgba(50,50,65,0.3);
+}
+
+.theme-neumorphism-dark .btn:active {
+  box-shadow: inset 3px 3px 6px rgba(20,20,28,0.7), inset -3px -3px 6px rgba(50,50,65,0.3);
+}
+
+.theme-neumorphism-dark .btn-primary {
+  background: linear-gradient(145deg, #9a8cff, #7a6adf);
+}
+
+.theme-neumorphism-dark .btn-secondary {
+  background: var(--bg-primary);
+}
+
+.theme-neumorphism-dark .card {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.theme-neumorphism-dark .input {
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--bg-primary);
+  box-shadow: inset 4px 4px 8px rgba(20,20,28,0.7), inset -4px -4px 8px rgba(50,50,65,0.3);
+}
+
+.theme-neumorphism-dark .nav-item {
+  border-radius: var(--radius-md);
+  margin: 4px 12px;
+  border-left: none;
+}
+
+.theme-neumorphism-dark .nav-item.active {
+  box-shadow: inset 3px 3px 6px rgba(20,20,28,0.7), inset -3px -3px 6px rgba(50,50,65,0.3);
+  color: var(--primary);
+}
+
+.theme-neumorphism-dark .pick-button {
+  background: linear-gradient(145deg, #9a8cff, #7a6adf);
+  box-shadow: 12px 12px 24px rgba(20,20,28,0.8), -12px -12px 24px rgba(50,50,65,0.4);
+}
+
+.theme-neumorphism-dark .switch {
+  box-shadow: inset 3px 3px 6px rgba(20,20,28,0.7), inset -3px -3px 6px rgba(50,50,65,0.3);
+  background: var(--bg-primary);
+}
