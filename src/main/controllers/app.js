@@ -30,6 +30,8 @@ class AppController extends Controller {
     this.handle('backup-data', this.backupData);
     this.handle('restore-data', this.restoreData);
     this.handle('open-external', this.openExternal);
+    this.handle('set-auto-launch', this.setAutoLaunch);
+    this.handle('get-auto-launch', this.getAutoLaunch);
   }
 
   async getSystemTheme() {
@@ -104,6 +106,32 @@ class AppController extends Controller {
       return true;
     } catch (error) {
       console.error('打开外部链接失败:', error);
+      return false;
+    }
+  }
+
+  async setAutoLaunch(event, enabled) {
+    try {
+      const { app } = require('electron');
+      app.setLoginItemSettings({
+        openAtLogin: enabled,
+        path: process.execPath,
+        args: []
+      });
+      return true;
+    } catch (error) {
+      console.error('设置开机自启动失败:', error);
+      return false;
+    }
+  }
+
+  async getAutoLaunch() {
+    try {
+      const { app } = require('electron');
+      const settings = app.getLoginItemSettings();
+      return settings.openAtLogin;
+    } catch (error) {
+      console.error('获取开机自启动状态失败:', error);
       return false;
     }
   }

@@ -128,6 +128,14 @@
             <span data-i18n="nav.about">关于</span>
           </div>
         </nav>
+        
+        <!-- 侧边栏折叠按钮 -->
+        <div class="sidebar-collapse-btn" onclick="app.toggleSidebar()" title="折叠侧边栏">
+          <svg class="collapse-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="11 17 6 12 11 7"></polyline>
+            <polyline points="18 17 13 12 18 7"></polyline>
+          </svg>
+        </div>
       </aside>
 
       <!-- 主内容区 -->
@@ -156,18 +164,44 @@
               class="flex flex-col items-center justify-center h-full gap-lg"
             >
               <!-- 无班级提示 -->
-              <div id="home-no-class" class="empty-state hidden">
-                <div class="empty-state-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="64" height="64"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></div>
-                <div class="empty-state-title" data-i18n="home.noClass">
-                  暂无班级，请先创建班级
+              <div id="home-no-class" class="empty-state-card hidden">
+                <div class="empty-state-icon-wrapper">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="80" height="80">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    <line x1="12" y1="8" x2="12" y2="14"></line>
+                    <line x1="9" y1="11" x2="15" y2="11"></line>
+                  </svg>
                 </div>
+                <h2 class="empty-state-title">欢迎使用 Spotlight</h2>
+                <p class="empty-state-desc">开始使用前，请先创建一个班级</p>
+                <button class="btn btn-primary btn-lg" onclick="app.showPage('classes'); classManager.showModal()">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  创建第一个班级
+                </button>
               </div>
 
               <!-- 无学生提示 -->
-              <div id="home-no-students" class="empty-state hidden">
-                <div class="empty-state-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="64" height="64"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
-                <div class="empty-state-title" data-i18n="home.noStudents">
-                  当前班级暂无学生
+              <div id="home-no-students" class="empty-state-card hidden">
+                <div class="empty-state-icon-wrapper">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="80" height="80">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <line x1="19" y1="8" x2="19" y2="14"></line>
+                    <line x1="16" y1="11" x2="22" y2="11"></line>
+                  </svg>
+                </div>
+                <h2 class="empty-state-title">班级还没有学生</h2>
+                <p class="empty-state-desc">添加学生后即可开始随机点名</p>
+                <div class="flex gap-md">
+                  <button class="btn btn-primary" onclick="app.showPage('students'); studentManager.showAddModal()">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    添加学生
+                  </button>
+                  <button class="btn btn-secondary" onclick="app.showPage('students'); studentManager.importFromFile()">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                    批量导入
+                  </button>
                 </div>
               </div>
 
@@ -643,6 +677,40 @@
                     onclick="settingsManager.toggleSoundEffects()"
                   ></div>
                 </div>
+                
+
+
+                <div class="setting-item">
+                  <div>
+                    <div class="setting-label">
+                      开机自启动
+                    </div>
+                    <div class="setting-hint" style="font-size: 12px; color: var(--text-tertiary);">
+                      系统启动时自动运行应用
+                    </div>
+                  </div>
+                  <div
+                    class="switch"
+                    id="switch-auto-launch"
+                    onclick="settingsManager.toggleAutoLaunch()"
+                  ></div>
+                </div>
+                <div class="setting-item">
+                  <div>
+                    <div class="setting-label">
+                      抽取动画
+                    </div>
+                    <div class="setting-hint" style="font-size: 12px; color: var(--text-tertiary);">
+                      选择抽取时的动画效果
+                    </div>
+                  </div>
+                  <select class="input" id="animation-style-select" onchange="settingsManager.setAnimationStyle(this.value)" style="width: 140px;">
+                    <option value="scroll">滚动</option>
+                    <option value="wheel">转盘</option>
+                    <option value="flip">卡片翻转</option>
+                    <option value="slot">老虎机</option>
+                  </select>
+                </div>
               </div>
             </div>
 
@@ -847,10 +915,12 @@
 
     <!-- 脚本 -->
     <script src="js/constants.js"></script>
+    <script src="js/virtual-scroll.js"></script>
     <script src="js/store.js"></script>
     <script src="js/theme.js"></script>
     <script src="js/i18n.js"></script>
     <script src="js/sound-manager.js"></script>
+
     <script src="js/class-manager.js"></script>
     <script src="js/student-manager.js"></script>
     <script src="js/picker.js"></script>

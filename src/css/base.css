@@ -24,8 +24,21 @@ body {
 
 body {
   display: flex;
-  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-              color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 主题切换过渡 - 应用于所有主要元素 */
+.sidebar,
+.main-content,
+.card,
+.modal,
+.nav-item,
+.btn {
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.3s ease;
 }
 
 /* ==================== CSS 变量 - 默认主题 ==================== */
@@ -145,7 +158,69 @@ body {
   border-right: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
-  transition: background-color var(--transition-normal);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color var(--transition-normal);
+  overflow: hidden;
+  position: relative;
+  white-space: nowrap; /* 关键：防止文字换行 */
+}
+
+/* 侧边栏折叠状态 */
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.sidebar .nav-item span,
+.sidebar .sidebar-logo {
+  opacity: 1;
+  transition: opacity 0.2s ease, width 0.2s ease;
+  overflow: hidden;
+}
+
+.sidebar.collapsed .sidebar-logo,
+.sidebar.collapsed .nav-item span {
+  opacity: 0;
+  width: 0;
+  pointer-events: none; /* 防止点击隐藏元素 */
+}
+
+.sidebar.collapsed .nav-item {
+  justify-content: center;
+  padding-left: var(--spacing-sm); /* 减少内边距 */
+  padding-right: var(--spacing-sm);
+}
+
+.sidebar.collapsed .sidebar-header {
+  padding: var(--spacing-lg) var(--spacing-sm);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+/* 折叠按钮 */
+.sidebar-collapse-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+  margin: var(--spacing-sm);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  color: var(--text-tertiary);
+  transition: all var(--transition-fast);
+}
+
+.sidebar-collapse-btn:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.sidebar.collapsed .sidebar-collapse-btn .collapse-icon {
+  transform: rotate(180deg);
+}
+
+.collapse-icon {
+  transition: transform 0.3s ease;
 }
 
 .sidebar-header {

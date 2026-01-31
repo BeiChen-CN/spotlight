@@ -43,5 +43,9 @@ contextBridge.exposeInMainWorld('electronAPI', {
   restoreData: (sourcePath) => ipcRenderer.invoke('restore-data', sourcePath),
   
   // 外部链接
-  openExternal: (url) => ipcRenderer.invoke('open-external', url)
+  openExternal: (url) => ipcRenderer.invoke('open-external', url),
+  
+  // 开机自启动
+  setAutoLaunch: (enabled) => ipcRenderer.invoke('set-auto-launch', enabled),
+  getAutoLaunch: () => ipcRenderer.invoke('get-auto-launch')
 });

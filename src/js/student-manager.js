@@ -1,8 +1,7 @@
-/**
- * 学生管理模块
- */
-
 const studentManager = {
+  // 虚拟滚动阈值 - 超过此数量时延迟渲染
+  virtualScrollThreshold: 50,
+  
   /**
    * 渲染学生列表
    */
@@ -26,44 +25,84 @@ const studentManager = {
     
     emptyEl.classList.add('hidden');
     
+    // 大列表优化：分批渲染
+    if (students.length > this.virtualScrollThreshold) {
+      await this.renderLargeList(students, listEl, settings);
+    } else {
+      await this.renderNormalList(students, listEl, settings);
+    }
+  },
+
+  /**
+   * 普通列表渲染
+   */
+  async renderNormalList(students, listEl, settings) {
     const rows = await Promise.all(students.map(async (student) => {
-      let photoHtml = '';
-      if (settings.photoMode) {
-        if (student.photo) {
-          const photoPath = await window.electronAPI.getPhotoPath(student.photo);
-          photoHtml = `<img src="file://${photoPath}" alt="">`;
-        } else {
-          photoHtml = '👤';
-        }
+      return this.renderStudentRow(student, settings);
+    }));
+    listEl.innerHTML = rows.join('');
+  },
+
+  /**
+   * 大列表分批渲染 (虚拟化优化)
+   */
+  async renderLargeList(students, listEl, settings) {
+    const batchSize = 20;
+    listEl.innerHTML = '';
+    
+    // 先渲染前 20 条
+    const firstBatch = students.slice(0, batchSize);
+    const firstRows = await Promise.all(firstBatch.map(s => this.renderStudentRow(s, settings)));
+    listEl.innerHTML = firstRows.join('');
+    
+    // 延迟渲染剩余部分
+    if (students.length > batchSize) {
+      setTimeout(async () => {
+        const remainingStudents = students.slice(batchSize);
+        const remainingRows = await Promise.all(remainingStudents.map(s => this.renderStudentRow(s, settings)));
+        listEl.insertAdjacentHTML('beforeend', remainingRows.join(''));
+      }, 50);
+    }
+  },
+
+  /**
+   * 渲染单个学生行
+   */
+  async renderStudentRow(student, settings) {
+    let photoHtml = '';
+    if (settings.photoMode) {
+      if (student.photo) {
+        const photoPath = await window.electronAPI.getPhotoPath(student.photo);
+        photoHtml = `<img src="file://${photoPath}" alt="">`;
       } else {
         photoHtml = '👤';
       }
-      
-      return `
-        <tr>
-          <td>
-            <div class="avatar">
-              ${photoHtml}
-            </div>
-          </td>
-          <td>${this.escapeHtml(student.name)}</td>
-          <td style="display: ${settings.showStudentId ? '' : 'none'}">
-            ${this.escapeHtml(student.studentId || '-')}
-          </td>
-          <td>${student.pickCount || 0}</td>
-          <td class="table-actions">
-            <button class="btn btn-ghost btn-sm" onclick="studentManager.showEditModal('${student.id}')">
-              ${t('common.edit')}
-            </button>
-            <button class="btn btn-ghost btn-sm" onclick="studentManager.confirmDelete('${student.id}')">
-              ${t('common.delete')}
-            </button>
-          </td>
-        </tr>
-      `;
-    }));
+    } else {
+      photoHtml = '👤';
+    }
     
-    listEl.innerHTML = rows.join('');
+    return `
+      <tr>
+        <td>
+          <div class="avatar">
+            ${photoHtml}
+          </div>
+        </td>
+        <td>${this.escapeHtml(student.name)}</td>
+        <td style="display: ${settings.showStudentId ? '' : 'none'}">
+          ${this.escapeHtml(student.studentId || '-')}
+        </td>
+        <td>${student.pickCount || 0}</td>
+        <td class="table-actions">
+          <button class="btn btn-ghost btn-sm" onclick="studentManager.showEditModal('${student.id}')">
+            ${t('common.edit')}
+          </button>
+          <button class="btn btn-ghost btn-sm" onclick="studentManager.confirmDelete('${student.id}')">
+            ${t('common.delete')}
+          </button>
+        </td>
+      </tr>
+    `;
   },
 
   /**

@@ -6,6 +6,7 @@ const picker = {
   pickCount: 1,
   maxPickCount: 10,
   minPickCount: 1,
+  animationStyle: 'slot', // 动画样式: scroll, wheel, flip, slot
 
   /**
    * 设置抽取人数
@@ -66,14 +67,184 @@ const picker = {
     btn.classList.add('picking');
     btn.disabled = true;
     
-    // 显示滚动遮罩，传入最终中奖者
-    await this.playRollingAnimation(students, pickedStudents);
+    // 根据动画样式播放对应动画
+    const settings = store.getSettings();
+    const style = settings.animationStyle || this.animationStyle;
+    await this.playAnimation(students, pickedStudents, style);
     
     btn.classList.remove('picking');
     btn.disabled = false;
 
     // 显示结果
     await this.showResult(pickedStudents);
+  },
+
+  /**
+   * 播放动画 (路由到具体动画)
+   */
+  async playAnimation(students, targetStudents, style) {
+    switch (style) {
+      case 'scroll':
+        return this.playScrollAnimation(students, targetStudents);
+      case 'wheel':
+        return this.playWheelAnimation(students, targetStudents);
+      case 'flip':
+        return this.playFlipAnimation(students, targetStudents);
+      case 'slot':
+      default:
+        return this.playRollingAnimation(students, targetStudents);
+    }
+  },
+
+  /**
+   * 滚动动画 - 名字快速滚动后定格 (修复版)
+   */
+  async playScrollAnimation(students, targetStudents) {
+    console.log('Starting Scroll Animation');
+    return new Promise((resolve) => {
+      // 1. Create Overlay
+      const overlay = document.createElement('div');
+      overlay.className = 'animation-overlay';
+      overlay.innerHTML = `
+        <div class="scroll-animation-box">
+          <div class="scroll-names"></div>
+        </div>
+      `;
+      document.body.appendChild(overlay);
+      
+      const namesEl = overlay.querySelector('.scroll-names');
+      let index = 0;
+      const duration = 2000;
+      const startTime = Date.now();
+      
+      const animate = () => {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const delay = 50 + progress * 200;
+        
+        if (progress < 1) {
+          const student = students[index % students.length];
+          const name = student ? student.name : '???';
+          namesEl.innerHTML = `<div class="scroll-name">${this.escapeHtml(name)}</div>`;
+          index++;
+          setTimeout(animate, delay);
+        } else {
+          try { soundManager.play('result'); } catch(e) { console.error(e); }
+          namesEl.innerHTML = targetStudents.map(s => 
+            `<div class="scroll-name final">${this.escapeHtml(s.name)}</div>`
+          ).join('');
+          
+          setTimeout(() => {
+            if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+            resolve();
+          }, 800);
+        }
+      };
+      
+      try { soundManager.play('rolling'); } catch(e) { console.error(e); }
+      animate();
+    });
+  },
+
+  /**
+   * 转盘动画 (修复版)
+   */
+  async playWheelAnimation(students, targetStudents) {
+    console.log('Starting Wheel Animation');
+    return new Promise((resolve) => {
+      const overlay = document.createElement('div');
+      overlay.className = 'animation-overlay';
+      
+      const count = Math.min(students.length, 12);
+      const sliceAngle = 360 / count;
+      
+      overlay.innerHTML = `
+        <div class="wheel-animation-box">
+          <div class="wheel-pointer">▼</div>
+          <div class="wheel">
+            ${students.slice(0, count).map((s, i) => `
+              <div class="wheel-slice" style="transform: rotate(${i * sliceAngle}deg); top: 0; left: 0;">
+                <span>${this.escapeHtml(s.name)}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+      document.body.appendChild(overlay);
+      
+      const wheel = overlay.querySelector('.wheel');
+      
+      const targetIndex = students.findIndex(s => s.id === targetStudents[0].id) % count;
+      // Ensure positive rotation
+      const targetAngle = 360 * 5 + (360 - targetIndex * sliceAngle - sliceAngle / 2);
+      
+      try { soundManager.play('rolling'); } catch(e) { console.error(e); }
+      
+      // Force reflow
+      wheel.offsetHeight; 
+
+      setTimeout(() => {
+        wheel.style.transition = 'transform 3s cubic-bezier(0.17, 0.67, 0.12, 0.99)';
+        wheel.style.transform = `rotate(${targetAngle}deg)`;
+      }, 50);
+      
+      setTimeout(() => {
+        try { soundManager.play('result'); } catch(e) { console.error(e); }
+        setTimeout(() => {
+           if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+          resolve();
+        }, 800);
+      }, 3200);
+    });
+  },
+
+  /**
+   * 卡片翻转动画 (修复版)
+   */
+  async playFlipAnimation(students, targetStudents) {
+    console.log('Starting Flip Animation');
+    return new Promise((resolve) => {
+      const overlay = document.createElement('div');
+      overlay.className = 'animation-overlay';
+      
+      if (!targetStudents || targetStudents.length === 0) {
+          resolve(); return;
+      }
+
+      overlay.innerHTML = `
+        <div class="flip-animation-box">
+          ${targetStudents.map((s) => `
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">?</div>
+                <div class="flip-card-back">${this.escapeHtml(s.name)}</div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+      document.body.appendChild(overlay);
+      
+      const cards = overlay.querySelectorAll('.flip-card');
+      
+      try { soundManager.play('rolling'); } catch(e) { console.error(e); }
+      
+      cards.forEach((card, i) => {
+        // Force reflow
+        card.offsetHeight; 
+        setTimeout(() => {
+          console.log('Flipping card', i);
+          card.classList.add('flipped');
+          try { soundManager.play('result'); } catch(e) { console.error(e); }
+        }, 800 + i * 400);
+      });
+      
+      const totalTime = 800 + cards.length * 400 + 1000;
+      setTimeout(() => {
+        if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+        resolve();
+      }, totalTime);
+    });
   },
 
   /**
@@ -430,6 +601,8 @@ const picker = {
     
     contentArea.innerHTML = items.join('');
     resultContainer.classList.remove('hidden');
+    
+
   },
 
   /**

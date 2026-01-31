@@ -15,6 +15,7 @@ const settingsManager = {
     this.updateSwitches();
     this.updateShortcutDisplay();
     this.updatePasswordButtons();
+    this.updateAnimationStyle();
   },
 
   /**
@@ -94,15 +95,35 @@ const settingsManager = {
   },
 
   /**
+   * 更新动画样式选择
+   */
+  updateAnimationStyle() {
+    const select = document.getElementById('animation-style-select');
+    if (select) {
+      const settings = store.getSettings();
+      select.value = settings.animationStyle || 'slot';
+    }
+  },
+
+  /**
+   * 设置动画样式
+   */
+  async setAnimationStyle(style) {
+    await store.updateSettings({ animationStyle: style });
+    picker.animationStyle = style;
+  },
+
+  /**
    * 更新开关状态
    */
-  updateSwitches() {
+  async updateSwitches() {
     const settings = store.getSettings();
     const fairness = settings.fairness || { weightedRandom: false, cooldownCount: 0 };
     
     const showIdSwitch = document.getElementById('switch-show-id');
     const photoModeSwitch = document.getElementById('switch-photo-mode');
     const soundSwitch = document.getElementById('switch-sound-effects');
+    const autoLaunchSwitch = document.getElementById('switch-auto-launch');
     const weightedSwitch = document.getElementById('switch-weighted-random');
     const cooldownInput = document.getElementById('cooldown-count');
     
@@ -111,6 +132,16 @@ const settingsManager = {
     if (soundSwitch) soundSwitch.classList.toggle('active', settings.soundEnabled !== false);
     if (weightedSwitch) weightedSwitch.classList.toggle('active', fairness.weightedRandom);
     if (cooldownInput) cooldownInput.value = fairness.cooldownCount || 0;
+    
+    // 获取开机自启动状态
+    if (autoLaunchSwitch) {
+      try {
+        const isAutoLaunch = await window.electronAPI.getAutoLaunch();
+        autoLaunchSwitch.classList.toggle('active', isAutoLaunch);
+      } catch (e) {
+        console.error('获取开机自启动状态失败:', e);
+      }
+    }
   },
 
   /**
@@ -143,6 +174,24 @@ const settingsManager = {
     await store.updateSettings({ soundEnabled: newState });
     soundManager.toggle(newState);
     this.updateSwitches();
+  },
+
+
+
+  /**
+   * 切换开机自启动
+   */
+  async toggleAutoLaunch() {
+    try {
+      const currentState = await window.electronAPI.getAutoLaunch();
+      const newState = !currentState;
+      await window.electronAPI.setAutoLaunch(newState);
+      this.updateSwitches();
+      app.toast(newState ? '已开启开机自启动' : '已关闭开机自启动');
+    } catch (e) {
+      console.error('切换开机自启动失败:', e);
+      app.toast('设置失败，请重试');
+    }
   },
 
   /**

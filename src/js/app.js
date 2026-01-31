@@ -53,13 +53,28 @@ const app = {
       // 初始化设置界面
       settingsManager.init();
       
+      
       // 更新首页状态
       this.updateHomeState();
+      
+      // 恢复侧边栏状态
+      if (localStorage.getItem('sidebarCollapsed') === 'true') {
+        document.querySelector('.sidebar').classList.add('collapsed');
+      }
       
       console.log('应用初始化完成');
     } catch (error) {
       console.error('应用初始化失败:', error);
     }
+  },
+
+  /**
+   * 切换侧边栏折叠状态
+   */
+  toggleSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.classList.toggle('collapsed');
+    localStorage.setItem('sidebarCollapsed', sidebar.classList.contains('collapsed'));
   },
 
   /**
