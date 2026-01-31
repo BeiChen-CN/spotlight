@@ -1,6 +1,6 @@
 {
   "name": "spotlight",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Spotlight - 智能随机点名助手",
   "main": "main.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "build:mac": "electron-builder --mac",
     "build:linux": "electron-builder --linux"
   },
-  "author": "",
+  "author": "BeiChen-CN <github@beichen.cn>",
   "license": "MIT",
   "devDependencies": {
     "electron": "^28.0.0",
@@ -78,13 +78,6 @@
       "preload.js",
       "src/**/*",
       "icon.png"
-    ],
-    "extraResources": [
-      {
-        "from": "data",
-        "to": "data",
-        "filter": ["*.json"]
-      }
     ]
   }
 }
