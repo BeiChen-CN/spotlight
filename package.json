@@ -1,6 +1,6 @@
 {
   "name": "spotlight",
-  "version": "1.0.6",
+  "version": "1.0.3",
   "description": "Spotlight - 智能随机点名助手",
   "main": "main.js",
   "scripts": {
