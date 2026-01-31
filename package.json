@@ -1,6 +1,6 @@
 {
   "name": "spotlight",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Spotlight - 智能随机点名助手",
   "main": "main.js",
   "scripts": {
@@ -21,10 +21,21 @@
     "archiver": "^6.0.1",
     "extract-zip": "^2.0.1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BeiChen-CN/spotlight.git"
+  },
   "build": {
     "appId": "com.spotlight.app",
     "productName": "Spotlight",
     "copyright": "Copyright © 2026 Spotlight Team",
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "BeiChen-CN",
+        "repo": "spotlight"
+      }
+    ],
     "directories": {
       "output": "dist",
       "buildResources": "build"
@@ -38,6 +49,15 @@
       ],
       "icon": "icon.png",
       "publisherName": "Spotlight Team"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "icon.png"
+    },
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "icon": "icon.png",
+      "category": "Utility"
     },
     "nsis": {
       "oneClick": false,
