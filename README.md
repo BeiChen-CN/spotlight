@@ -2,7 +2,6 @@
 
 > 一款基于 Electron 开发的轻量、炫酷且功能强大的课堂点名与评价工具。专为老师设计，让课堂互动更公平、更有趣！🚀
 
-![App Screenshot](https://github.com/BeiChen-CN/spotlight/raw/master/icon.png)
 
 ## ✨ 核心特性
 
