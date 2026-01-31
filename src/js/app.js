@@ -159,6 +159,17 @@ const app = {
   },
 
   /**
+   * 打开外部链接
+   */
+  openExternal(url) {
+    if (window.electronAPI && window.electronAPI.openExternal) {
+      window.electronAPI.openExternal(url);
+    } else {
+      window.open(url, '_blank');
+    }
+  },
+
+  /**
    * 切换页面
    */
   showPage(pageName) {

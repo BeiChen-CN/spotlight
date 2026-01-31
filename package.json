@@ -1,6 +1,6 @@
 {
   "name": "spotlight",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Spotlight - 智能随机点名助手",
   "main": "main.js",
   "scripts": {
@@ -27,7 +27,7 @@
     },
     "win": {
       "target": "nsis",
-      "icon": "build/icon.ico"
+      "icon": "build/icon.png"
     },
     "nsis": {
       "oneClick": false,

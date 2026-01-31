@@ -40,5 +40,8 @@ contextBridge.exposeInMainWorld('electronAPI', {
   
   // 备份恢复
   backupData: (targetPath) => ipcRenderer.invoke('backup-data', targetPath),
-  restoreData: (sourcePath) => ipcRenderer.invoke('restore-data', sourcePath)
+  restoreData: (sourcePath) => ipcRenderer.invoke('restore-data', sourcePath),
+  
+  // 外部链接
+  openExternal: (url) => ipcRenderer.invoke('open-external', url)
 });

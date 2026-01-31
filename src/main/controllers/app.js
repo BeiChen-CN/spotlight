@@ -1,5 +1,5 @@
 const Controller = require('./base');
-const { nativeTheme, globalShortcut } = require('electron');
+const { nativeTheme, globalShortcut, shell } = require('electron');
 const { getMainWindow } = require('../window');
 const archiver = require('archiver');
 const extractZip = require('extract-zip');
@@ -29,6 +29,7 @@ class AppController extends Controller {
     this.handle('register-shortcut', this.registerShortcut);
     this.handle('backup-data', this.backupData);
     this.handle('restore-data', this.restoreData);
+    this.handle('open-external', this.openExternal);
   }
 
   async getSystemTheme() {
@@ -93,6 +94,16 @@ class AppController extends Controller {
       return true;
     } catch (error) {
       console.error('恢复失败:', error);
+      return false;
+    }
+  }
+
+  async openExternal(event, url) {
+    try {
+      await shell.openExternal(url);
+      return true;
+    } catch (error) {
+      console.error('打开外部链接失败:', error);
       return false;
     }
   }
