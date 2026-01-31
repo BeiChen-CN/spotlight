@@ -1,6 +1,6 @@
 {
   "name": "spotlight",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Spotlight - 智能随机点名助手",
   "main": "main.js",
   "scripts": {
@@ -22,29 +22,46 @@
   "build": {
     "appId": "com.spotlight.app",
     "productName": "Spotlight",
+    "copyright": "Copyright © 2026 Spotlight Team",
     "directories": {
-      "output": "dist"
+      "output": "dist",
+      "buildResources": "build"
     },
     "win": {
-      "target": "nsis",
-      "icon": "build/icon.png"
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "icon.png",
+      "publisherName": "Spotlight Team"
     },
     "nsis": {
       "oneClick": false,
+      "perMachine": false,
       "allowToChangeInstallationDirectory": true,
+      "allowElevation": true,
       "createDesktopShortcut": true,
-      "createStartMenuShortcut": true
+      "createStartMenuShortcut": true,
+      "shortcutName": "Spotlight",
+      "license": "LICENSE",
+      "language": 2052,
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": false,
+      "artifactName": "${productName}-Setup-${version}.${ext}"
     },
     "files": [
       "main.js",
       "preload.js",
       "src/**/*",
-      "data/**/*"
+      "icon.png"
     ],
     "extraResources": [
       {
         "from": "data",
-        "to": "data"
+        "to": "data",
+        "filter": ["*.json"]
       }
     ]
   }
