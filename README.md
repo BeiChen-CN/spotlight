@@ -2,7 +2,6 @@
 
 > 一款基于 Electron 开发的轻量、炫酷且功能强大的课堂点名与评价工具。专为老师设计，让课堂互动更公平、更有趣！🚀
 
-
 ## ✨ 核心特性
 
 ### 🎲 智能抽取 (Smart Picking)
@@ -42,31 +41,54 @@
 
 ## 🚀 快速开始
 
-### 开发环境
+### 📋 环境要求
 
-确保您的电脑已安装 [Node.js](https://nodejs.org/) (建议 v16+)。
+|      工具      | 版本要求 | 说明                            |
+| :------------: | :------: | :------------------------------ |
+| 💚 **Node.js** | `16.0+`  | [官网下载](https://nodejs.org/) |
+|   📦 **npm**   |  `8.0+`  | 随 Node.js 自动安装             |
 
-### 运行步骤
+### 📥 安装步骤
 
-1. **安装依赖**:
-   ```bash
-   npm install
-   ```
-2. **启动应用**:
-   ```bash
-   npm start
-   ```
-3. **打包发布**:
-   ```bash
-   npm run build:win
-   ```
+```bash
+# 1️⃣ 克隆仓库
+git clone https://github.com/BeiChen-CN/spotlight.git
+cd spotlight
+
+# 2️⃣ 安装依赖
+npm install
+
+# 3️⃣ 启动应用
+npm start
+```
+
+### 📦 打包发布
+
+```bash
+# Windows 安装包
+npm run build:win
+
+# macOS 安装包
+npm run build:mac
+
+# Linux 安装包
+npm run build:linux
+```
+
+> 💡 打包产物位于 `dist/` 目录
+
+---
 
 ## 🛠️ 技术栈
 
-- **内核**: Electron
-- **前端**: 原生 HTML5, Vanilla JS, CSS3 (不依赖任何臃肿框架)
-- **图表**: Chart.js
-- **导出**: xlsx
+|  模块   | 技术                           |
+| :-----: | :----------------------------- |
+| ⚡ 内核 | Electron                       |
+| 🌐 前端 | 原生 HTML5 + Vanilla JS + CSS3 |
+| 📊 图表 | Chart.js                       |
+| 📄 导出 | xlsx                           |
+
+---
 
 ## 📝 许可证
 
